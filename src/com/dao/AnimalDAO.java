@@ -41,7 +41,7 @@ public class AnimalDAO implements DAO<Animal> {
             }else{
                 System.out.println("Falha :(");
             }
-            
+
             con.close();
 
         } catch (SQLException e) {
