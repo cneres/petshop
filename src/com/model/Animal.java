@@ -3,22 +3,19 @@ package com.model;
 public class Animal {
 
     private String apelido;
-    private String raça;
+    private String raca;
     private String cor;
-
-
-
     private String cpfDono;
     private int id;
 
 
 
     //metodo construtor com todos os parametros
-    public Animal(String apelido, String raça, String cor,String cpfDono, int id){
+    public Animal(String apelido, String raca, String cor, String cpfDono, int id){
 
         super();
         this.apelido = apelido;
-        this.raça = raça;
+        this.raca = raca;
         this.cor = cor;
         this.cpfDono = cpfDono;
         this.id = id;
@@ -45,12 +42,12 @@ public class Animal {
         this.apelido = apelido;
     }
 
-    public String getRaça() {
-        return raça;
+    public String getRaca() {
+        return raca;
     }
 
-    public void setRaça(String raça) {
-        this.raça = raça;
+    public void setRaca(String raca) {
+        this.raca = raca;
     }
 
     public String getCor() {
@@ -67,5 +64,10 @@ public class Animal {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Apelido" + apelido + "Raça:" + raca +  "Cor" + cor;
     }
 }

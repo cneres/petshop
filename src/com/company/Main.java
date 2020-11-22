@@ -1,5 +1,7 @@
 package com.company;
 
+import com.dao.AnimalDAO;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Scanner;
@@ -19,9 +21,6 @@ public class Main {
         Scanner leitor = new Scanner(System.in);
 
         do {
-
-
-
             System.out.println("Olá, seja bem vindo ao PetShop FishBallCat");
             System.out.println("Selecione o modo de operação do sistema abaixo!");
             System.out.println("1 - Cadastros");
@@ -97,7 +96,8 @@ public class Main {
 
                         if (opcaocrud == 1) {
 
-                            //listarAnimais();
+                            AnimalDAO AnimalDAO = new AnimalDAO();
+                            AnimalDAO.listar();
                         } else if (opcaocrud == 2) {
 
                             System.out.println("Digite o ID do pet que deseja alterar");

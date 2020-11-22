@@ -195,9 +195,9 @@ public class AnimalDAO implements DAO<Animal> {
 
         //criando conexao com BD
         String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
-        Connection con;
+
         try {
-            con = DriverManager.getConnection(url);
+            Connection con = DriverManager.getConnection(url);
             List<Animal> listaDeAnimais = new ArrayList<>();
 
             //criando executor e query
@@ -223,6 +223,7 @@ public class AnimalDAO implements DAO<Animal> {
             executor.close();
             con.close();
 
+           System.out.println("aaaaaaaaaaaaaaaa");
         } catch (SQLException e) {
 
             System.out.println("AnimalDAO.list() -> erro SQL");
