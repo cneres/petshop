@@ -19,7 +19,7 @@ public class AnimalDAO implements DAO<Animal> {
         String cor = "";
 
         //criando conexao com BD
-        String url = "jbdc:sqlite:\\C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\lib\\sqlite-jdbc-3.32.3.2.jar\\";
+        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         try {
@@ -44,12 +44,11 @@ public class AnimalDAO implements DAO<Animal> {
             }
 
             con.close();
+            executor.close();
 
         } catch (SQLException e) {
             System.out.println("AnimalDAO.salvar() -> erro SQL");
         }
-
-
 
         return null;
     }
@@ -60,7 +59,7 @@ public class AnimalDAO implements DAO<Animal> {
         Scanner leitor = new Scanner(System.in);
 
         //criando conexao com BD
-        String url = "jbdc:sqlite:\\C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\lib\\sqlite-jdbc-3.32.3.2.jar\\";
+        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
@@ -195,7 +194,7 @@ public class AnimalDAO implements DAO<Animal> {
     public List<Animal> listar() {
 
         //criando conexao com BD
-        String url = "jbdc:sqlite:\\C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\lib\\sqlite-jdbc-3.32.3.2.jar\\";
+        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con;
         try {
             con = DriverManager.getConnection(url);
@@ -241,7 +240,7 @@ public class AnimalDAO implements DAO<Animal> {
         int idExclusao = leitor.nextInt();
 
         //criando conexão com o banco de dados
-        String url = "jbdc:sqlite:\\C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\lib\\sqlite-jdbc-3.32.3.2.jar\\";
+        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con = null;
         try {
         String sql = "delete from pessoas where id = ?";
