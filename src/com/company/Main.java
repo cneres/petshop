@@ -16,7 +16,7 @@ public class Main {
         int opcao;
         Scanner leitor = new Scanner(System.in);
 
-        
+
 
             System.out.println("Olá, seja bem vindo ao PetShop FishBallCat");
             System.out.println("Selecione o modo de operação do sistema abaixo!");

@@ -5,6 +5,7 @@ import com.model.Animal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AnimalDAO implements DAO<Animal> {
 
@@ -55,6 +56,133 @@ public class AnimalDAO implements DAO<Animal> {
 
     @Override
     public Animal atualizar(Animal entidade) {
+
+        Scanner leitor = new Scanner(System.in);
+
+        //criando conexao com BD
+        String url = "jbdc:sqlite:\\C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\lib\\sqlite-jdbc-3.32.3.2.jar\\";
+        Connection con = null;
+
+        System.out.println("Digite o ID do animal desejado");
+        int idAlteracao = leitor.nextInt();
+
+        System.out.println("Selecione o campo que deseja alterar");
+        System.out.println("1 - Apelido");
+        System.out.println("2 - Raça");
+        System.out.println("3 - Cor");
+
+        int opcao = leitor.nextInt();
+
+        switch (opcao){
+
+            case 1:
+
+                System.out.println("Digite o novo apelido do animal");
+                String novoApelido = leitor.next();
+
+                //alteração no BD
+
+
+                try {
+                //criar e executar query
+                String sql = "update animal set apelido = ? where id = ?;";
+                PreparedStatement executor = null;
+
+                    executor = con.prepareStatement(sql);
+
+                executor.setString(1, novoApelido);
+                executor.setInt(2, idAlteracao);
+
+                int retorno = executor.executeUpdate();
+
+
+                if (retorno == 1){
+
+                    System.out.println("Sucesso! :)");
+                }else{
+                    System.out.println("Falha :(");
+                }
+
+                    con.close();
+
+                } catch (SQLException e) {
+                    System.out.println("AnimalDAO.atualizar() -> erro SQL");
+                }
+                break;
+
+            case 2:
+
+                System.out.println("Digite a nova raça do animal");
+                String novaRaça = leitor.next();
+
+                //alteração no BD
+
+
+                try {
+                    //criar e executar query
+                    String sql = "update animal set raca = ? where id = ?;";
+                    PreparedStatement executor = null;
+
+                    executor = con.prepareStatement(sql);
+
+                    executor.setString(1, novaRaça);
+                    executor.setInt(2, idAlteracao);
+
+                    int retorno = executor.executeUpdate();
+
+
+                    if (retorno == 1){
+
+                        System.out.println("Sucesso! :)");
+                    }else{
+                        System.out.println("Falha :(");
+                    }
+
+                    con.close();
+
+                } catch (SQLException e) {
+                    System.out.println("AnimalDAO.atualizar() -> erro SQL");
+                }
+                break;
+
+            case 3:
+                System.out.println("Digite a nova cor do animal");
+                String novaCor = leitor.next();
+
+                //alteração no BD
+
+
+                try {
+                    //criar e executar query
+                    String sql = "update animal set cor = ? where id = ?;";
+                    PreparedStatement executor = null;
+
+                    executor = con.prepareStatement(sql);
+
+                    executor.setString(1, novaCor);
+                    executor.setInt(2, idAlteracao);
+
+                    int retorno = executor.executeUpdate();
+
+
+                    if (retorno == 1){
+
+                        System.out.println("Sucesso! :)");
+                    }else{
+                        System.out.println("Falha :(");
+                    }
+
+                    con.close();
+
+                } catch (SQLException e) {
+                    System.out.println("AnimalDAO.atualizar() -> erro SQL");
+                }
+
+                break;
+
+        }
+
+
         return null;
     }
 
@@ -107,6 +235,36 @@ public class AnimalDAO implements DAO<Animal> {
 
     @Override
     public void apagar(Integer id) {
+
+        Scanner leitor = new Scanner(System.in);
+        System.out.println("Digite o ID do animal desejado");
+        int idExclusao = leitor.nextInt();
+
+        //criando conexão com o banco de dados
+        String url = "jbdc:sqlite:\\C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\lib\\sqlite-jdbc-3.32.3.2.jar\\";
+        Connection con = null;
+        try {
+        String sql = "delete from pessoas where id = ?";
+        PreparedStatement executor = null;
+
+            executor = con.prepareStatement(sql);
+
+        executor.setInt(1, idExclusao);
+
+        int retorno = executor.executeUpdate();
+
+            if (retorno == 1){
+
+                System.out.println("Sucesso! :)");
+            }else{
+                System.out.println("Falha :(");
+            }
+
+        executor.close();
+        con.close();
+        } catch (SQLException e) {
+            System.out.println("AnimalDAO.apagar() -> erro SQL");
+        }
 
     }
 }
