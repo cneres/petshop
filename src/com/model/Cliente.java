@@ -2,12 +2,27 @@ package com.model;
 
 public class Cliente {
 
+
+
     private String nome;
     private String cpf;
     private String telefone;
     private String endereço;
 
+    //metodo construtor vazio
+    public Cliente(){
 
+    }
+
+    //metodo construtor com parametros
+    public Cliente(String nome, String cpf, String telefone, String endereço) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereço = endereço;
+    }
+
+    //getters e setters
     public String getNome() {
         return nome;
     }
@@ -39,4 +54,6 @@ public class Cliente {
     public void setEndereço(String endereço) {
         this.endereço = endereço;
     }
+
+
 }

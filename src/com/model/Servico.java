@@ -2,11 +2,26 @@ package com.model;
 
 public class Servico {
 
+
     private int id;
     private String nome;
     private double preço;
     private String descricao;
 
+    //metodo construtor vazio
+    public Servico(){
+
+    }
+
+    //metodo construtor com parametros
+    public Servico(int id, String nome, double preço, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.preço = preço;
+        this.descricao = descricao;
+    }
+
+    //getters e setters
     public int getId() {
         return id;
     }
