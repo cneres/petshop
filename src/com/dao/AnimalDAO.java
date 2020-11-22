@@ -3,6 +3,7 @@ package com.dao;
 import com.model.Animal;
 
 import java.sql.*;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class AnimalDAO implements DAO<Animal> {
         String cor = "";
 
         //criando conexao com BD
-        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         try {
@@ -59,7 +60,7 @@ public class AnimalDAO implements DAO<Animal> {
         Scanner leitor = new Scanner(System.in);
 
         //criando conexao com BD
-        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
@@ -194,12 +195,13 @@ public class AnimalDAO implements DAO<Animal> {
     public List<Animal> listar() {
 
         //criando conexao com BD
-        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
             Connection con = DriverManager.getConnection(url);
-            List<Animal> listaDeAnimais = new ArrayList<>();
 
+
+            List<Animal> listaDeAnimais = new ArrayList<>();
             //criando executor e query
             Statement executor = con.createStatement();
             String sql = "select * from animal;";
@@ -218,12 +220,16 @@ public class AnimalDAO implements DAO<Animal> {
                 Animal animal = new Animal(apelido, raca, cor,cpfDono , id);
 
                 listaDeAnimais.add(animal);
-            }
+
+                System.out.println(animal);
+              }
+
+
 
             executor.close();
             con.close();
 
-           System.out.println("aaaaaaaaaaaaaaaa");
+           System.out.println("");
         } catch (SQLException e) {
 
             System.out.println("AnimalDAO.list() -> erro SQL");
@@ -241,7 +247,7 @@ public class AnimalDAO implements DAO<Animal> {
         int idExclusao = leitor.nextInt();
 
         //criando conexão com o banco de dados
-        String url = "jbdc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con = null;
         try {
         String sql = "delete from pessoas where id = ?";
