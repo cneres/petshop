@@ -8,6 +8,7 @@ public class Animal {
     private String raça;
     private String cor;
     private Cliente clienteResponsavel = new Cliente();
+    private int id;
 
     public String getApelido() {
         return apelido;
@@ -39,5 +40,13 @@ public class Animal {
 
     public void setClienteResponsavel(Cliente clienteResponsavel) {
         this.clienteResponsavel = clienteResponsavel;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
