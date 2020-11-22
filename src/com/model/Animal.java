@@ -1,6 +1,4 @@
-package com.animais;
-
-import com.clientes.Cliente;
+package com.model;
 
 public class Animal {
 

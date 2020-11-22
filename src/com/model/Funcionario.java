@@ -1,4 +1,4 @@
-package com.funcionarios;
+package com.model;
 
 public class Funcionario {
 
