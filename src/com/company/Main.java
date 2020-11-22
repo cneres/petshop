@@ -14,8 +14,8 @@ public class Main {
 
 
         int opcao;
-        int optcrud;
-        String rpt = "s";
+        int opcaocrud;
+        String repetir = "s";
         Scanner leitor = new Scanner(System.in);
 
         do {
@@ -42,27 +42,27 @@ public class Main {
                 System.out.println("2 - Alterar cadastros");
                 System.out.println("3 - Incluir cadastro");
                 System.out.println("4 - Excluir cadastro");
-                optcrud = leitor.nextInt();
+                opcaocrud = leitor.nextInt();
 
 
                 switch (opcao) {
                     case 1:
 
 
-                        if (optcrud == 1) {
+                        if (opcaocrud == 1) {
 
                             //listarClientes();
-                        } else if (optcrud == 2) {
+                        } else if (opcaocrud == 2) {
 
                             System.out.println("Digite o CPF do cliente que deseja alterar");
                             String cpfAlteracao = leitor.next();
 
                             //alterarCadastroCliente(cpfAlteracao);
-                        } else if (optcrud == 3) {
+                        } else if (opcaocrud == 3) {
 
                             //cadastrarClientes();
 
-                        } else if (optcrud == 4) {
+                        } else if (opcaocrud == 4) {
                             System.out.println("Digite o CPF do cliente que deseja excluir");
                             //excluirClientes();
                         }
@@ -72,20 +72,20 @@ public class Main {
                     case 2:
 
 
-                        if (optcrud == 1) {
+                        if (opcaocrud == 1) {
 
                             //listarFuncionarios();
-                        } else if (optcrud == 2) {
+                        } else if (opcaocrud == 2) {
 
                             System.out.println("Digite o CPF do funcionario que deseja alterar");
                             String cpfAlteracao = leitor.next();
 
                             //alterarCadastro(cpfAlteracao);
-                        } else if (optcrud == 3) {
+                        } else if (opcaocrud == 3) {
 
                             //cadastrarClientes();
 
-                        } else if (optcrud == 4) {
+                        } else if (opcaocrud == 4) {
                             System.out.println("Digite o CPF do cliente que deseja excluir");
                             //excluirClientes();
                         }
@@ -95,20 +95,20 @@ public class Main {
                     case 3:
 
 
-                        if (optcrud == 1) {
+                        if (opcaocrud == 1) {
 
                             //listarAnimais();
-                        } else if (optcrud == 2) {
+                        } else if (opcaocrud == 2) {
 
                             System.out.println("Digite o ID do pet que deseja alterar");
                             int idAnimal = leitor.nextInt();
 
                             //alterarCadastro(idAnimal);
-                        } else if (optcrud == 3) {
+                        } else if (opcaocrud == 3) {
 
                             //cadastrarAnimais();
 
-                        } else if (optcrud == 4) {
+                        } else if (opcaocrud == 4) {
                             System.out.println("Digite o ID do pet que deseja excluir");
                             //excluirClientes();
                         }
@@ -118,20 +118,20 @@ public class Main {
                     case 4:
 
 
-                        if (optcrud == 1) {
+                        if (opcaocrud == 1) {
 
                             //listarServicos();
-                        } else if (optcrud == 2) {
+                        } else if (opcaocrud == 2) {
 
                             System.out.println("Digite o ID do serviço que deseja alterar");
                             int idAnimal = leitor.nextInt();
 
                             //alterarCadastro(idAnimal);
-                        } else if (optcrud == 3) {
+                        } else if (opcaocrud == 3) {
 
                             //cadastrarServico();
 
-                        } else if (optcrud == 4) {
+                        } else if (opcaocrud == 4) {
                             System.out.println("Digite o ID do serviço que deseja excluir");
                             //excluirServico();
                         }
@@ -143,7 +143,12 @@ public class Main {
 
 
             }
+             if (opcao == 2){
+                
+
+            }
             System.out.println("Deseja continuar usando o sistema? s/n");
-        } while(rpt == "s");
+            repetir = leitor.next();
+        } while(repetir == "s");
     }
 }
