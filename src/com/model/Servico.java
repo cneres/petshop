@@ -1,4 +1,4 @@
-package com.servicos;
+package com.model;
 
 public class Servico {
 
