@@ -78,17 +78,81 @@ public class Main {
                             String cpfAlteracao = leitor.next();
 
                             //alterarCadastroCliente(cpfAlteracao);
+                        }else {
+
+                            System.out.println("Opção Invalida!");
                         }
                         break;
 
                     case 2:
+
+                        System.out.println("Selecione a opção desejada!");
+                        System.out.println("1 - Visualizar cadastros");
+                        System.out.println("2 - Alterar cadastros");
+                        opcao = leitor.nextInt();
+
+                        if (opcao == 1)
+                        {
+                            //listarFuncionarios();
+                        }else if (opcao == 2)
+                        {
+                            System.out.println("Digite o CPF do funcionario que deseja alterar");
+                            String cpfAlteracao = leitor.next();
+
+                            //alterarCadastroFuncionario(cpfAlteracao);
+                        }else{
+
+                            System.out.println("Opção Invalida!");
+                        }
+
                         break;
 
                     case 3:
-                        break;
+
+                        System.out.println("Selecione a opção desejada!");
+                        System.out.println("1 - Visualizar cadastros");
+                        System.out.println("2 - Alterar cadastros");
+                        opcao = leitor.nextInt();
+
+                        if (opcao == 1){
+
+                            //listarAnimais();
+
+                        }else if(opcao == 2){
+
+                            System.out.println("Digite o ID do animal que deseja alterar");
+                            int IDAlteracao = leitor.nextInt();
+
+                            //alterarCadastroAnimal(IDAlteracao);
+
+                        }else {
+
+                            System.out.println("Opção Invalida!");
+                        }
+
+                    break;
 
                     case 4:
-                        break;
+                        System.out.println("Selecione a opção desejada!");
+                        System.out.println("1 - Visualizar cadastros");
+                        System.out.println("2 - Alterar cadastros");
+                        opcao = leitor.nextInt();
+
+                        if (opcao == 1){
+
+                            //listarServiços();
+                        }else if(opcao == 2){
+
+                            System.out.println("Digite o ID do serviço que deseja alterar");
+                            int IDAlteracao = leitor.nextInt();
+
+                            //alterarCadastroServico(IDAlteracao);
+                        }else {
+
+                            System.out.println("Opção Invalida!");
+                        }
+
+                    break;
 
 
                 }
