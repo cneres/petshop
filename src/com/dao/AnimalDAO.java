@@ -221,9 +221,12 @@ public class AnimalDAO implements DAO<Animal> {
 
                 listaDeAnimais.add(animal);
 
-                System.out.println(animal);
+
               }
 
+            for ( Animal animal:listaDeAnimais) {
+                System.out.println("Apelido: " + animal.getApelido() + "CPF do responsável: " + animal.getCpfDono() + "ID do animal" + animal.getId() + "Raça: " + animal.getRaca() + "Cor: " + animal.getCor());
+            }
 
 
             executor.close();
