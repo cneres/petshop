@@ -31,7 +31,7 @@ public class OSDAO implements DAO<OS>{
     public List<OS> listar() {
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
             Connection con = DriverManager.getConnection(url);
@@ -55,11 +55,11 @@ public class OSDAO implements DAO<OS>{
 
 
                 sql = "select idServX from osXserv where idOsX = " + idOs +";";
-                resultado = executor.executeQuery(sql);
+                ResultSet resultado1 = executor.executeQuery(sql);
 
-                while (resultado.next())
-                {
-                    int idServico = resultado.getInt("idServX");
+                while (resultado1.next()){
+
+                    int idServico = resultado1.getInt("idServX");
                     Servico servico = new Servico();
                     servico.setId(idServico);
                     listaDeServicos.add(servico);
@@ -70,8 +70,14 @@ public class OSDAO implements DAO<OS>{
             }
 
             for ( OS os: listaDeOS) {
-                System.out.println(" ID do animal: " + os.getIdAnimal() + "CPF funcionario responsável: " + os.getCpfFuncionario() + "Status da O.S.: " + os.getStatus() + "Serviços realizados" + os.getListaDeServico());
+                System.out.print("ID da O.S " + os.getId() + "    ID do animal: " + os.getIdAnimal() + "     CPF funcionario responsável: " + os.getCpfFuncionario() + "     Status da O.S.: " + os.getStatus());
+                System.out.print("ID's de serviços realizados: ");
+                for (Servico servico:os.getListaDeServico()) {
+                    System.out.print(servico.getId() + " | ");
+                }
             }
+            System.out.println("");
+
 
             executor.close();
             con.close();

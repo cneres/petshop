@@ -27,7 +27,7 @@ public class ServicoDAO implements DAO<Servico>{
         String descricao = in.readLine();
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         try{
@@ -65,7 +65,7 @@ public class ServicoDAO implements DAO<Servico>{
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do serviço desejado");
@@ -84,6 +84,7 @@ public class ServicoDAO implements DAO<Servico>{
                 String novoNome = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update servico set nome = ? where idServ = ?;";
                     PreparedStatement executor = null;
@@ -116,6 +117,7 @@ public class ServicoDAO implements DAO<Servico>{
                 int novoPreco = in.read();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update servico set preco = ? where idServ = ?;";
                     PreparedStatement executor = null;
@@ -146,6 +148,7 @@ public class ServicoDAO implements DAO<Servico>{
                 String novaDescricao = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update servico set descricao = ? where idServ = ?;";
                     PreparedStatement executor = null;
@@ -184,7 +187,7 @@ public class ServicoDAO implements DAO<Servico>{
     @Override
     public List<Servico> listar() {
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
             Connection con = DriverManager.getConnection(url);
@@ -237,7 +240,7 @@ public class ServicoDAO implements DAO<Servico>{
         int idExclusao = in.read();
 
         //criando conexão com o banco de dados
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
 

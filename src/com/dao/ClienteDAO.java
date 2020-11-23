@@ -31,7 +31,7 @@ public class ClienteDAO implements DAO<Cliente> {
         String endereco = in.readLine();
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         try{
@@ -66,10 +66,10 @@ public class ClienteDAO implements DAO<Cliente> {
 
     @Override
     public Cliente atualizar(Cliente entidade) throws IOException {
-
+        Scanner leitor = new Scanner(System.in);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o CPF do cliente desejado");
@@ -80,7 +80,7 @@ public class ClienteDAO implements DAO<Cliente> {
         System.out.println("2 - CPF");
         System.out.println("3 - Telefone");
         System.out.println("4 - Endereço");
-        int opcao = in.read();
+        int opcao = leitor.nextInt();
 
         switch (opcao){
 
@@ -89,6 +89,7 @@ public class ClienteDAO implements DAO<Cliente> {
                 String novoNome = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update cliente set nome = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -121,6 +122,7 @@ public class ClienteDAO implements DAO<Cliente> {
                 String novoCPF = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update cliente set cpf = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -151,6 +153,7 @@ public class ClienteDAO implements DAO<Cliente> {
                 String novoTelefone = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update cliente set telefone = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -183,6 +186,7 @@ public class ClienteDAO implements DAO<Cliente> {
                 String novoEndereco = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update cliente set endereco = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -222,7 +226,7 @@ public class ClienteDAO implements DAO<Cliente> {
     public List<Cliente> listar() {
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
             Connection con = DriverManager.getConnection(url);
@@ -270,7 +274,7 @@ public class ClienteDAO implements DAO<Cliente> {
         String cpfExclusao = in.readLine();
 
         //criando conexão com o banco de dados
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
 

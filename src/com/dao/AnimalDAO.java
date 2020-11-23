@@ -69,21 +69,22 @@ public class AnimalDAO implements DAO<Animal> {
     @Override
     public Animal atualizar(Animal entidade) throws IOException {
 
+        Scanner leitor = new Scanner(System.in);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
-        int idAlteracao = in.read();
+        int idAlteracao = leitor.nextInt();
 
         System.out.println("Selecione o campo que deseja alterar");
         System.out.println("1 - Apelido");
         System.out.println("2 - Raça");
         System.out.println("3 - Cor");
 
-        int opcao = in.read();
+        int opcao = leitor.nextInt();
 
         switch (opcao){
 
@@ -94,11 +95,12 @@ public class AnimalDAO implements DAO<Animal> {
 
                 //alteração no BD
                 try {
+                    con = DriverManager.getConnection(url);
                 //criar e executar query
-                String sql = "update animal set apelido = ? where id = ?;";
+                String sql = "update animal set apelido = ? where idAnimal = ?;";
                 PreparedStatement executor = null;
 
-                    executor = con.prepareStatement(sql);
+                executor = con.prepareStatement(sql);
 
                 executor.setString(1, novoApelido);
                 executor.setInt(2, idAlteracao);
@@ -129,8 +131,9 @@ public class AnimalDAO implements DAO<Animal> {
 
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
-                    String sql = "update animal set raca = ? where id = ?;";
+                    String sql = "update animal set raca = ? where idAnimal = ?;";
                     PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -162,8 +165,9 @@ public class AnimalDAO implements DAO<Animal> {
 
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
-                    String sql = "update animal set cor = ? where id = ?;";
+                    String sql = "update animal set cor = ? where idAnimal = ?;";
                     PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -204,7 +208,7 @@ public class AnimalDAO implements DAO<Animal> {
     public List<Animal> listar() {
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
             Connection con = DriverManager.getConnection(url);
@@ -254,12 +258,13 @@ public class AnimalDAO implements DAO<Animal> {
     @Override
     public void apagar(Integer id) throws IOException {
 
+        Scanner leitor = new Scanner(System.in);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Digite o ID do pet que deseja excluir");
-        int idExclusao = in.read();
+        int idExclusao = leitor.nextInt();
 
         //criando conexão com o banco de dados
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
 

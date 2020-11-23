@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FuncionarioDAO implements DAO<Funcionario>{
     @Override
@@ -32,7 +33,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
         String cargo = in.readLine();
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         try{
@@ -70,9 +71,10 @@ public class FuncionarioDAO implements DAO<Funcionario>{
     @Override
     public Funcionario atualizar(Funcionario entidade) throws IOException {
 
+        Scanner leitor = new Scanner(System.in);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o CPF do funcionario desejado");
@@ -84,7 +86,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
         System.out.println("3 - Telefone");
         System.out.println("4 - Endereço");
         System.out.println("5 - Cargo");
-        int opcao = in.read();
+        int opcao = leitor.nextInt();
 
         switch (opcao){
 
@@ -93,6 +95,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
                 String novoNome = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update funcionario set nome = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -125,6 +128,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
                 String novoCPF = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update funcionario set cpf = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -155,6 +159,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
                 String novoTelefone = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update funcionario set telefone = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -187,6 +192,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
                 String novoEndereco = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update funcionario set endereco = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -219,6 +225,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
                 String novoCargo = in.readLine();
 
                 try {
+                    con = DriverManager.getConnection(url);
                     //criar e executar query
                     String sql = "update funcionario set cargo = ? where cpf = ?;";
                     PreparedStatement executor = null;
@@ -258,7 +265,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
     public List<Funcionario> listar() {
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
             Connection con = DriverManager.getConnection(url);
@@ -285,7 +292,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
 
             }
             for ( Funcionario funcionario: listaDeFuncionarios) {
-                System.out.println("Nome do Funcionario: " + funcionario.getNome() + "  CPF: " + funcionario.getCpf() + "Endereço: " + funcionario.getEndereço() + " Telefone: " + funcionario.getTelefone() + "Cargo: " + funcionario.getCargo());
+                System.out.println("Nome do Funcionario: " + funcionario.getNome() + "  CPF: " + funcionario.getCpf() + "   Endereço: " + funcionario.getEndereço() + " Telefone: " + funcionario.getTelefone() + " Cargo: " + funcionario.getCargo());
             }
 
             executor.close();
@@ -306,7 +313,7 @@ public class FuncionarioDAO implements DAO<Funcionario>{
         String cpfExclusao = in.readLine();
 
         //criando conexão com o banco de dados
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
 
         try {
 

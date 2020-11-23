@@ -17,6 +17,7 @@ public class Main {
         //Connection con = DriverManager.getConnection(url);
 
 
+        int opcaomain;
         int opcao;
         int opcaocrud;
         int repetir = 1;
@@ -27,10 +28,10 @@ public class Main {
             System.out.println("Selecione o modo de operação do sistema abaixo!");
             System.out.println("1 - Cadastros");
             System.out.println("2 - Ordens de Serviço");
-            opcao = leitor.nextInt();
+            opcaomain = leitor.nextInt();
 
 
-            if (opcao == 1) {
+            if (opcaomain == 1) {
                 System.out.println("Selecione o setor");
                 System.out.println("1 - Clientes");
                 System.out.println("2 - Funcionarios");
@@ -165,7 +166,7 @@ public class Main {
 
 
             }
-             if (opcao == 2){
+             if (opcaomain == 2){
 
                  System.out.println("Selecione a opção desejada!");
                  System.out.println("1 - Visualizar O.S's");
