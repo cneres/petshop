@@ -3,13 +3,14 @@ package com.company;
 import com.dao.AnimalDAO;
 import com.model.Animal;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         //conexao com o banco de dados - exp p/ metodo dps
         //String url = "jdbc:sqlite:localbancodedados";
