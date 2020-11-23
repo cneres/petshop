@@ -38,14 +38,15 @@ public class OSDAO implements DAO<OS>{
 
 
             List<OS> listaDeOS = new ArrayList<>();
+            List<Servico> listaDeServicos = new ArrayList<>();
 
             //criando executor e query
             Statement executor = con.createStatement();
-            String sql = "select * from OS;";
-            ResultSet resultado = executor.executeQuery(sql);
+            String sql = "select * from os;";
 
+            ResultSet resultado = executor.executeQuery(sql);
             //populando os objetos
-            List<Servico> listaDeServicos = new ArrayList<>();
+
             while (resultado.next()){
 
                 int idOs = resultado.getInt("idOs");
@@ -71,7 +72,7 @@ public class OSDAO implements DAO<OS>{
 
             for ( OS os: listaDeOS) {
                 System.out.print("ID da O.S " + os.getId() + "    ID do animal: " + os.getIdAnimal() + "     CPF funcionario responsável: " + os.getCpfFuncionario() + "     Status da O.S.: " + os.getStatus());
-                System.out.print("ID's de serviços realizados: ");
+                System.out.print("  ID's de serviços realizados: ");
                 for (Servico servico:os.getListaDeServico()) {
                     System.out.print(servico.getId() + " | ");
                 }
