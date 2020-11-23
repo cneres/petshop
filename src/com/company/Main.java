@@ -1,13 +1,7 @@
 package com.company;
 
-import com.dao.AnimalDAO;
-import com.dao.ClienteDAO;
-import com.dao.FuncionarioDAO;
-import com.dao.ServicoDAO;
-import com.model.Animal;
-import com.model.Cliente;
-import com.model.Funcionario;
-import com.model.Servico;
+import com.dao.*;
+import com.model.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -180,17 +174,34 @@ public class Main {
                  System.out.println("4 - Excluir O.S");
                  opcaocrud = leitor.nextInt();
 
-                 switch (opcao) {
+                 switch (opcaocrud) {
                      case 1:
 
+                         OSDAO OSDAO = new OSDAO();
+                         OSDAO.listar();
                          break;
 
                      case 2:
 
+                         OS os = new OS();
+                         OSDAO osDao = new OSDAO();
+                         osDao.atualizar(os);
                          break;
 
+                     case 3:
 
+                         OS Os = new OS();
+                         OSDAO OSDao = new OSDAO();
+                         OSDao.salvar(Os);
+                         break;
+
+                     case 4:
+
+                         OSDAO OsDao = new OSDAO();
+                         OsDao.apagar(0);
+                         break;
                  }
+
             }
             System.out.println("Deseja continuar usando o sistema? 1-SIM | 2-NÃO");
             repetir = leitor.nextInt();
