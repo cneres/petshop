@@ -18,7 +18,7 @@ public class Main {
 
         int opcao;
         int opcaocrud;
-        String repetir = "s";
+        int repetir = 1;
         Scanner leitor = new Scanner(System.in);
 
         do {
@@ -101,9 +101,9 @@ public class Main {
                             AnimalDAO AnimalDAO = new AnimalDAO();
                             AnimalDAO.listar();
                         } else if (opcaocrud == 2) {
-
-                            System.out.println("Digite o ID do pet que deseja alterar");
-                            int idAnimal = leitor.nextInt();
+                            Animal animal = new Animal();
+                            AnimalDAO AnimalDAO = new AnimalDAO();
+                            AnimalDAO.atualizar(animal);
 
                             //alterarCadastro(idAnimal);
                         } else if (opcaocrud == 3) {
@@ -152,8 +152,8 @@ public class Main {
                 
 
             }
-            System.out.println("Deseja continuar usando o sistema? s/n");
-            repetir = leitor.next();
-        } while(repetir == "s");
+            System.out.println("Deseja continuar usando o sistema? 1-SIM | 2-NÃO");
+            repetir = leitor.nextInt();
+        } while(repetir == 1);
     }
 }
