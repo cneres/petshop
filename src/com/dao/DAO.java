@@ -6,8 +6,8 @@ import java.util.List;
 public interface DAO<T> {
 
     T salvar(T entidade) throws IOException;
-    T atualizar(T entidade);
+    T atualizar(T entidade) throws IOException;
     T buscarPorID(Integer ID);
     List<T> listar();
-    void apagar(Integer id);
+    void apagar(Integer id) throws IOException;
 }
