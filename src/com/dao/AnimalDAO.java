@@ -2,6 +2,8 @@ package com.dao;
 
 import com.model.Animal;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.sql.*;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ public class AnimalDAO implements DAO<Animal> {
 
     @Override
     public Animal salvar(Animal entidade) {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
         int idAnimal = 0;
         String apelido = "";
         String cpfDono = "";
@@ -58,6 +62,7 @@ public class AnimalDAO implements DAO<Animal> {
     public Animal atualizar(Animal entidade) {
 
         Scanner leitor = new Scanner(System.in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         //criando conexao com BD
         String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";

@@ -18,7 +18,7 @@ public class Main {
 
         int opcao;
         int opcaocrud;
-        String repetir = "s";
+        int repetir = 1;
         Scanner leitor = new Scanner(System.in);
 
         do {
@@ -148,8 +148,8 @@ public class Main {
                 
 
             }
-            System.out.println("Deseja continuar usando o sistema? s/n");
-            repetir = leitor.next();
-        } while(repetir == "s");
+            System.out.println("Deseja continuar usando o sistema? 1-SIM | 2-NÃO");
+            repetir = leitor.nextInt();
+        } while(repetir == 1);
     }
 }
