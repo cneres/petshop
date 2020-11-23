@@ -40,7 +40,7 @@ public class AnimalDAO implements DAO<Animal> {
             con = DriverManager.getConnection(url);
 
             //criando o executor e query
-            String sql = "insert into animal (apelido, raca, cor, cpfDono ) values (?, ?, ?, ?);";
+            String sql = "insert into animal (apelido, raca, cor, cpfDono) values (?, ?, ?, ?);";
             PreparedStatement executor = con.prepareStatement(sql);
             executor.setString(1, apelido);
             executor.setString(2, raca);
