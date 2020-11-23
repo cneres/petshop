@@ -60,7 +60,7 @@ public class AnimalDAO implements DAO<Animal> {
         Scanner leitor = new Scanner(System.in);
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
@@ -85,7 +85,8 @@ public class AnimalDAO implements DAO<Animal> {
 
                 try {
                 //criar e executar query
-                String sql = "update animal set apelido = ? where id = ?;";
+                con = DriverManager.getConnection(url);
+                String sql = "update animal set apelido = ? where idAnimal = ?;";
                 PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -120,7 +121,8 @@ public class AnimalDAO implements DAO<Animal> {
 
                 try {
                     //criar e executar query
-                    String sql = "update animal set raca = ? where id = ?;";
+                    con = DriverManager.getConnection(url);
+                    String sql = "update animal set raca = ? where idAnimal = ?;";
                     PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -154,7 +156,8 @@ public class AnimalDAO implements DAO<Animal> {
 
                 try {
                     //criar e executar query
-                    String sql = "update animal set cor = ? where id = ?;";
+                    con = DriverManager.getConnection(url);
+                    String sql = "update animal set cor = ? where idAnimal = ?;";
                     PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -255,7 +258,7 @@ public class AnimalDAO implements DAO<Animal> {
         try {
 
         Connection con = DriverManager.getConnection(url);
-        String sql = "delete from animal where id = ?";
+        String sql = "delete from animal where idAnimal = ?";
         PreparedStatement executor = null;
 
             executor = con.prepareStatement(sql);

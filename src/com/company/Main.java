@@ -1,6 +1,7 @@
 package com.company;
 
 import com.dao.AnimalDAO;
+import com.model.Animal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -99,9 +100,9 @@ public class Main {
                             AnimalDAO AnimalDAO = new AnimalDAO();
                             AnimalDAO.listar();
                         } else if (opcaocrud == 2) {
-
-                            System.out.println("Digite o ID do pet que deseja alterar");
-                            int idAnimal = leitor.nextInt();
+                            Animal animal = new Animal();
+                            AnimalDAO AnimalDAO = new AnimalDAO();
+                            AnimalDAO.atualizar(animal);
 
                             //alterarCadastro(idAnimal);
                         } else if (opcaocrud == 3) {
