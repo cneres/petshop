@@ -109,8 +109,8 @@ public class Main {
                             //cadastrarAnimais();
 
                         } else if (opcaocrud == 4) {
-                            System.out.println("Digite o ID do pet que deseja excluir");
-                            //excluirClientes();
+                            AnimalDAO AnimalDAO = new AnimalDAO();
+                            AnimalDAO.apagar(0);
                         }
 
                         break;

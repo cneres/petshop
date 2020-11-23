@@ -225,7 +225,7 @@ public class AnimalDAO implements DAO<Animal> {
               }
 
             for ( Animal animal:listaDeAnimais) {
-                System.out.println("Apelido: " + animal.getApelido() + "CPF do responsável: " + animal.getCpfDono() + "ID do animal" + animal.getId() + "Raça: " + animal.getRaca() + "Cor: " + animal.getCor());
+                System.out.println("ID do animal: " + animal.getId() + "  Apelido: " + animal.getApelido() + "    CPF do responsável: " + animal.getCpfDono() + " Raça: " + animal.getRaca() + "  Cor: " + animal.getCor());
             }
 
 
@@ -246,14 +246,16 @@ public class AnimalDAO implements DAO<Animal> {
     public void apagar(Integer id) {
 
         Scanner leitor = new Scanner(System.in);
-        System.out.println("Digite o ID do animal desejado");
+        System.out.println("Digite o ID do pet que deseja excluir");
         int idExclusao = leitor.nextInt();
 
         //criando conexão com o banco de dados
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
-        Connection con = null;
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
+
         try {
-        String sql = "delete from pessoas where id = ?";
+
+        Connection con = DriverManager.getConnection(url);
+        String sql = "delete from animal where id = ?";
         PreparedStatement executor = null;
 
             executor = con.prepareStatement(sql);
