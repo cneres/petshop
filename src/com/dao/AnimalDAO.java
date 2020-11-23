@@ -29,6 +29,9 @@ public class AnimalDAO implements DAO<Animal> {
         System.out.println("Digite a cor do animal");
         String cor = in.readLine();
 
+        System.out.println("Digite o CPF do responsável pelo animal");
+        String cpf = in.readLine();
+
         //criando conexao com BD
         String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
@@ -37,12 +40,12 @@ public class AnimalDAO implements DAO<Animal> {
             con = DriverManager.getConnection(url);
 
             //criando o executor e query
-            String sql = "insert into animal (apelido, raca, cor) values (?, ?, ?);";
+            String sql = "insert into animal (apelido, raca, cor, cpfDono ) values (?, ?, ?, ?);";
             PreparedStatement executor = con.prepareStatement(sql);
             executor.setString(1, apelido);
             executor.setString(2, raca);
             executor.setString(3, cor);
-            
+            executor.setString(4, cpf);
 
             int retorno = executor.executeUpdate();
 
@@ -69,7 +72,7 @@ public class AnimalDAO implements DAO<Animal> {
         Scanner leitor = new Scanner(System.in);
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
@@ -203,7 +206,7 @@ public class AnimalDAO implements DAO<Animal> {
     public List<Animal> listar() {
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
 
         try {
             Connection con = DriverManager.getConnection(url);
@@ -258,7 +261,7 @@ public class AnimalDAO implements DAO<Animal> {
         int idExclusao = leitor.nextInt();
 
         //criando conexão com o banco de dados
-        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
 
         try {
 

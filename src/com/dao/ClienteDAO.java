@@ -2,6 +2,9 @@ package com.dao;
 
 import com.model.Cliente;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,40 +14,19 @@ import java.util.Scanner;
 
 public class ClienteDAO implements DAO<Cliente> {
     @Override
-    public Cliente salvar(Cliente entidade) {
+    public Cliente salvar(Cliente entidade) throws IOException {
 
-        
-
-        //criando conexão com o DB
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
-        Connection con = null;
-
-        try {
-            con = DriverManager.getConnection(url);
-            String sql = "insert into cliente (nome, cpf, telefone, endereco) values (?, ?, ?, ?);";
-            PreparedStatement executor = con.prepareStatement(sql);
-            executor.setString(1, nome);
-            executor.setString(2, cpf);
-            executor.setString(3, telefone);
-            executor.setString(4, endereco);
-
-            int retorno = executor.executeUpdate();
-
-            if (retorno == 1){
-
-                System.out.println("Sucesso! :)");
-            }else{
-                System.out.println("Falha :(");
-            }
-
-            con.close();
-            executor.close();
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
 
-        } catch (SQLException e) {
-            System.out.println("ClienteDAO.salvar() -> erro SQL");
-        }
+        System.out.println("Digite o nome do cliente");
+        String nome = in.readLine();
 
+        System.out.println("Digite o CPF do cliente");
+        String raca = in.readLine();
+
+        System.out.println("");
+        String cor = in.readLine();
         return null;
     }
 
