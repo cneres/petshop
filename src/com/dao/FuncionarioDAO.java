@@ -299,7 +299,40 @@ public class FuncionarioDAO implements DAO<Funcionario>{
     }
 
     @Override
-    public void apagar(Integer id) {
+    public void apagar(Integer id) throws IOException {
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Digite o CPF do funcionario que deseja excluir");
+        String cpfExclusao = in.readLine();
+
+        //criando conexão com o banco de dados
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
+
+        try {
+
+            Connection con = DriverManager.getConnection(url);
+            String sql = "delete from funcionario where cpf = ?";
+            PreparedStatement executor = null;
+
+            executor = con.prepareStatement(sql);
+
+            executor.setString(1, cpfExclusao);
+
+            int retorno = executor.executeUpdate();
+
+            if (retorno == 1){
+
+                System.out.println("Sucesso! :)");
+            }else{
+                System.out.println("Falha :(");
+            }
+
+            executor.close();
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println("FuncionarioDAO.apagar() -> erro SQL");
+        }
 
 
     }

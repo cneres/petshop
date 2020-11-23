@@ -14,8 +14,8 @@ public class Servico {
     }
 
     //metodo construtor com parametros
-    public Servico(int id, String nome, double preço, String descricao) {
-        this.id = id;
+    public Servico( String nome, double preço, String descricao) {
+
         this.nome = nome;
         this.preço = preço;
         this.descricao = descricao;
