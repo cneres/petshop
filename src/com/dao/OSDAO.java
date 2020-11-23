@@ -38,8 +38,8 @@ public class OSDAO implements DAO<OS>{
 
         Servico servico = new Servico();
         servico.setId(idServico);
-
         listaDeServicos.add(servico);
+
         while (repeat == 1){
 
             System.out.println("Deseja adicionar mais algum serviço? 1-SIM | 2-NÃO");
@@ -49,13 +49,15 @@ public class OSDAO implements DAO<OS>{
             {
                 System.out.println("Digite o ID do serviço a ser adicionado");
                 idServico = leitor.nextInt();
-                servico.setId(idServico);
-                listaDeServicos.add(servico);
+                Servico servico2 = new Servico();
+                servico2.setId(idServico);
+                listaDeServicos.add(servico2);
             }
             else {
                 repeat = 2;
             }
         }
+
 
         //criando conexao com BD
         String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
@@ -97,9 +99,9 @@ public class OSDAO implements DAO<OS>{
             ResultSet resultado1 = executor1.executeQuery(sql);
             int idOs = resultado1.getInt("max(idOs)");
 
-            System.out.println(idOs);
 
             for (Servico servico1:listaDeServicos) {
+
                 sql = "insert into osXserv (idServX, idOsX) values (?, ?);";
                 PreparedStatement executor2 = con.prepareStatement(sql);
                 executor2.setInt(1, servico1.getId());
@@ -196,6 +198,40 @@ public class OSDAO implements DAO<OS>{
 
     @Override
     public void apagar(Integer id) {
+        Scanner leitor = new Scanner(System.in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Digite o ID da OS que deseja excluir");
+        int idExclusao = leitor.nextInt();
+
+        //criando conexão com o banco de dados
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
+
+        try {
+
+            Connection con = DriverManager.getConnection(url);
+            String sql = "delete from os where idOs = ?";
+            PreparedStatement executor = null;
+
+            executor = con.prepareStatement(sql);
+
+            executor.setInt(1, idExclusao);
+
+            int retorno = executor.executeUpdate();
+
+            if (retorno == 1){
+
+                System.out.println("Sucesso! :)");
+            }else{
+                System.out.println("Falha :(");
+            }
+
+            executor.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("AnimalDAO.apagar() -> erro SQL");
+        }
+
+
 
     }
 }
