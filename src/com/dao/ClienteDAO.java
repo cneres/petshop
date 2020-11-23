@@ -13,10 +13,7 @@ public class ClienteDAO implements DAO<Cliente> {
     @Override
     public Cliente salvar(Cliente entidade) {
 
-        String nome = "";
-        String cpf = "";
-        String telefone = "";
-        String endereco = "";
+        
 
         //criando conexão com o DB
         String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
