@@ -173,6 +173,24 @@ public class Main {
             }
              if (opcao == 2){
 
+                 System.out.println("Selecione a opção desejada!");
+                 System.out.println("1 - Visualizar O.S's");
+                 System.out.println("2 - Alterar O.S's");
+                 System.out.println("3 - Nova O.S");
+                 System.out.println("4 - Excluir O.S");
+                 opcaocrud = leitor.nextInt();
+
+                 switch (opcao) {
+                     case 1:
+
+                         break;
+
+                     case 2:
+
+                         break;
+
+
+                 }
                  
 
 
