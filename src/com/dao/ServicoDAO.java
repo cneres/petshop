@@ -91,7 +91,7 @@ public class ServicoDAO implements DAO<Servico>{
                     executor = con.prepareStatement(sql);
 
                     executor.setString(1, novoNome);
-                    executor.setString(2, ID);
+                    executor.setInt(2, ID);
 
                     int retorno = executor.executeUpdate();
 
@@ -122,8 +122,8 @@ public class ServicoDAO implements DAO<Servico>{
 
                     executor = con.prepareStatement(sql);
 
-                    executor.setString(1, novoPreco);
-                    executor.setString(2, ID);
+                    executor.setDouble(1, novoPreco);
+                    executor.setInt(2, ID);
 
                     int retorno = executor.executeUpdate();
 
