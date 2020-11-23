@@ -4,6 +4,11 @@ public class Servico {
 
 
     private int id;
+
+    public Servico(int id) {
+        this.id = id;
+    }
+
     private String nome;
     private double preço;
     private String descricao;

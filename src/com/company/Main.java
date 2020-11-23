@@ -191,12 +191,6 @@ public class Main {
 
 
                  }
-                 
-
-
-
-
-
             }
             System.out.println("Deseja continuar usando o sistema? 1-SIM | 2-NÃO");
             repetir = leitor.nextInt();
