@@ -170,9 +170,9 @@ public class Main {
 
                  System.out.println("Selecione a opção desejada!");
                  System.out.println("1 - Visualizar O.S's");
-                 System.out.println("2 - Alterar O.S's");
-                 System.out.println("3 - Nova O.S");
-                 System.out.println("4 - Excluir O.S");
+                 System.out.println("2 - Nova O.S");
+                 System.out.println("3 - Excluir O.S");
+//                 System.out.println("4 - Alterar O.S's");
                  opcaocrud = leitor.nextInt();
 
                  switch (opcaocrud) {
@@ -184,23 +184,23 @@ public class Main {
 
                      case 2:
 
-                         OS os = new OS();
-                         OSDAO osDao = new OSDAO();
-                         osDao.atualizar(os);
-                         break;
-
-                     case 3:
-
                          OS Os = new OS();
                          OSDAO OSDao = new OSDAO();
                          OSDao.salvar(Os);
                          break;
 
-                     case 4:
+                     case 3:
 
                          OSDAO OsDao = new OSDAO();
                          OsDao.apagar(0);
                          break;
+
+//                     case 4:
+//
+//                         OS os = new OS();
+//                         OSDAO osDao = new OSDAO();
+//                         osDao.atualizar(os);
+//                         break;
                  }
 
             }

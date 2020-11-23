@@ -225,10 +225,25 @@ public class OSDAO implements DAO<OS>{
                 System.out.println("Falha :(");
             }
 
+
             executor.close();
             con.close();
+
+            Connection con1 = DriverManager.getConnection(url);
+            String sql1 = "delete from osXserv where idOsX = ?";
+            PreparedStatement executor1 = null;
+
+            executor1 = con1.prepareStatement(sql1);
+
+            executor1.setInt(1, idExclusao);
+
+            executor1.executeUpdate();
+
+            executor1.close();
+            con1.close();
+
         } catch (SQLException e) {
-            System.out.println("AnimalDAO.apagar() -> erro SQL");
+            System.out.println("OSDAO.apagar() -> erro SQL");
         }
 
 
