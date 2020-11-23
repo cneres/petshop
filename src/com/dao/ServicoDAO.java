@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ServicoDAO implements DAO<Servico>{
     @Override
@@ -62,6 +63,7 @@ public class ServicoDAO implements DAO<Servico>{
     @Override
     public Servico atualizar(Servico entidade) throws IOException {
 
+        Scanner leitor = new Scanner(System.in);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         //criando conexao com BD
@@ -69,13 +71,13 @@ public class ServicoDAO implements DAO<Servico>{
         Connection con = null;
 
         System.out.println("Digite o ID do serviço desejado");
-        int ID = in.read();
+        int ID = leitor.nextInt();
 
         System.out.println("Selecione o campo que deseja alterar");
         System.out.println("1 - Nome");
         System.out.println("2 - Preço");
         System.out.println("3 - Descrição");
-        int opcao = in.read();
+        int opcao = leitor.nextInt();
 
         switch (opcao){
 
@@ -114,7 +116,7 @@ public class ServicoDAO implements DAO<Servico>{
             case 2:
 
                 System.out.println("Digite o novo preço do serviço");
-                int novoPreco = in.read();
+                double novoPreco = leitor.nextDouble();
 
                 try {
                     con = DriverManager.getConnection(url);
@@ -205,20 +207,20 @@ public class ServicoDAO implements DAO<Servico>{
 
             while (resultado.next()){
 
-
+                int id = resultado.getInt("idServ");
                 String nome = resultado.getString("nome");
                 Double preco = resultado.getDouble("preco");
                 String descricao = resultado.getString("descricao");
 
 
 
-                Servico servico = new Servico(nome, preco, descricao);
+                Servico servico = new Servico(id, nome, preco, descricao);
                 listaDeServico.add(servico);
 
             }
 
             for ( Servico servico: listaDeServico) {
-                System.out.println("Nome do serviço: " + servico.getNome() + "  Preço: R$" + servico.getPreço() + "Descrição: " + servico.getDescricao());
+                System.out.println("ID do serviço: " + servico.getId() + "  Nome do serviço: " + servico.getNome() + "  Preço: R$ " + servico.getPreço() + "    Descrição: " + servico.getDescricao());
             }
 
             executor.close();

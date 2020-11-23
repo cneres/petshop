@@ -3,12 +3,9 @@ package com.model;
 public class Servico {
 
 
+
+
     private int id;
-
-    public Servico(int id) {
-        this.id = id;
-    }
-
     private String nome;
     private double preço;
     private String descricao;
@@ -19,8 +16,8 @@ public class Servico {
     }
 
     //metodo construtor com parametros
-    public Servico( String nome, double preço, String descricao) {
-
+    public Servico( int id, String nome, double preço, String descricao) {
+        this.id = id;
         this.nome = nome;
         this.preço = preço;
         this.descricao = descricao;
