@@ -1,6 +1,7 @@
 package com.company;
 
 import com.dao.AnimalDAO;
+import com.model.Animal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -59,6 +60,7 @@ public class Main {
                             //alterarCadastroCliente(cpfAlteracao);
                         } else if (opcaocrud == 3) {
 
+
                             //cadastrarClientes();
 
                         } else if (opcaocrud == 4) {
@@ -106,6 +108,9 @@ public class Main {
                             //alterarCadastro(idAnimal);
                         } else if (opcaocrud == 3) {
 
+                            AnimalDAO AnimalDAO = new AnimalDAO();
+                            Animal animal = new Animal();
+                            AnimalDAO.salvar(animal);
                             //cadastrarAnimais();
 
                         } else if (opcaocrud == 4) {

@@ -13,11 +13,17 @@ public class AnimalDAO implements DAO<Animal> {
 
     @Override
     public Animal salvar(Animal entidade) {
-        int idAnimal = 0;
-        String apelido = "";
-        String cpfDono = "";
-        String raca = "";
-        String cor = "";
+
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Digite o apelido do animal");
+        String apelido = leitor.next();
+
+        System.out.println("Digite a raça do animal");
+        String raca = leitor.next();
+
+        System.out.println();
+        String cor = leitor.next();
 
         //criando conexao com BD
         String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
@@ -27,13 +33,12 @@ public class AnimalDAO implements DAO<Animal> {
             con = DriverManager.getConnection(url);
 
             //criando o executor e query
-            String sql = "insert into animal (idAnimal, apelido, cpfDono, raca, cor) values (?, ?, ?, ?, ?);";
+            String sql = "insert into animal (apelido, raca, cor) values (?, ?, ?);";
             PreparedStatement executor = con.prepareStatement(sql);
             executor.setInt(1, idAnimal);
             executor.setString(2,apelido);
             executor.setString(3, cpfDono);
-            executor.setString(4, raca);
-            executor.setString(5, cor);
+            
 
             int retorno = executor.executeUpdate();
 
@@ -129,7 +134,6 @@ public class AnimalDAO implements DAO<Animal> {
                     executor.setInt(2, idAlteracao);
 
                     int retorno = executor.executeUpdate();
-
 
                     if (retorno == 1){
 
@@ -258,7 +262,7 @@ public class AnimalDAO implements DAO<Animal> {
         String sql = "delete from animal where id = ?";
         PreparedStatement executor = null;
 
-            executor = con.prepareStatement(sql);
+        executor = con.prepareStatement(sql);
 
         executor.setInt(1, idExclusao);
 
