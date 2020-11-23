@@ -93,8 +93,6 @@ public class AnimalDAO implements DAO<Animal> {
                 String novoApelido = leitor.next();
 
                 //alteração no BD
-
-
                 try {
                 //criar e executar query
                 String sql = "update animal set apelido = ? where id = ?;";
@@ -266,7 +264,7 @@ public class AnimalDAO implements DAO<Animal> {
         try {
 
         Connection con = DriverManager.getConnection(url);
-        String sql = "delete from animal where id = ?";
+        String sql = "delete from animal where idAnimal = ?";
         PreparedStatement executor = null;
 
         executor = con.prepareStatement(sql);
