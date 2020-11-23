@@ -2,6 +2,9 @@ package com.dao;
 
 import com.model.Animal;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.*;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -12,18 +15,19 @@ public class AnimalDAO implements DAO<Animal> {
 
 
     @Override
-    public Animal salvar(Animal entidade) {
+    public Animal salvar(Animal entidade) throws IOException {
 
-        Scanner leitor = new Scanner(System.in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
 
         System.out.println("Digite o apelido do animal");
-        String apelido = leitor.next();
+        String apelido = in.readLine();
 
         System.out.println("Digite a raça do animal");
-        String raca = leitor.next();
+        String raca = in.readLine();
 
-        System.out.println();
-        String cor = leitor.next();
+        System.out.println("Digite a cor do animal");
+        String cor = in.readLine();
 
         //criando conexao com BD
         String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
@@ -35,9 +39,9 @@ public class AnimalDAO implements DAO<Animal> {
             //criando o executor e query
             String sql = "insert into animal (apelido, raca, cor) values (?, ?, ?);";
             PreparedStatement executor = con.prepareStatement(sql);
-            executor.setInt(1, idAnimal);
-            executor.setString(2,apelido);
-            executor.setString(3, cpfDono);
+            executor.setString(1, apelido);
+            executor.setString(2, raca);
+            executor.setString(3, cor);
             
 
             int retorno = executor.executeUpdate();
