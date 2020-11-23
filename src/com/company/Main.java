@@ -1,7 +1,13 @@
 package com.company;
 
 import com.dao.AnimalDAO;
+import com.dao.ClienteDAO;
+import com.dao.FuncionarioDAO;
+import com.dao.ServicoDAO;
 import com.model.Animal;
+import com.model.Cliente;
+import com.model.Funcionario;
+import com.model.Servico;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -51,20 +57,26 @@ public class Main {
 
                         if (opcaocrud == 1) {
 
-                            //listarClientes();
+                            Cliente cliente = new Cliente();
+                            ClienteDAO ClienteDAO = new ClienteDAO();
+                            ClienteDAO.listar();
                         } else if (opcaocrud == 2) {
 
-                            System.out.println("Digite o CPF do cliente que deseja alterar");
-                            String cpfAlteracao = leitor.next();
+                            Cliente cliente = new Cliente();
+                            ClienteDAO ClienteDAO = new ClienteDAO();
+                            ClienteDAO.atualizar(cliente);
 
                             //alterarCadastroCliente(cpfAlteracao);
                         } else if (opcaocrud == 3) {
 
-                            //cadastrarClientes();
+                            Cliente cliente = new Cliente();
+                            ClienteDAO ClienteDAO = new ClienteDAO();
+                            ClienteDAO.salvar(cliente);
 
                         } else if (opcaocrud == 4) {
-                            System.out.println("Digite o CPF do cliente que deseja excluir");
-                            //excluirClientes();
+                            Cliente cliente = new Cliente();
+                            ClienteDAO ClienteDAO = new ClienteDAO();
+                            ClienteDAO.apagar(0);
                         }
 
                         break;
@@ -74,20 +86,26 @@ public class Main {
 
                         if (opcaocrud == 1) {
 
-                            //listarFuncionarios();
+                            Funcionario funcionario = new Funcionario();
+                            FuncionarioDAO FuncionarioDao = new FuncionarioDAO();
+                            FuncionarioDao.listar();
                         } else if (opcaocrud == 2) {
 
-                            System.out.println("Digite o CPF do funcionario que deseja alterar");
-                            String cpfAlteracao = leitor.next();
+                            Funcionario funcionario = new Funcionario();
+                            FuncionarioDAO FuncionarioDao = new FuncionarioDAO();
+                            FuncionarioDao.atualizar(funcionario);
 
                             //alterarCadastro(cpfAlteracao);
                         } else if (opcaocrud == 3) {
 
-                            //cadastrarClientes();
+                            Funcionario funcionario = new Funcionario();
+                            FuncionarioDAO FuncionarioDao = new FuncionarioDAO();
+                            FuncionarioDao.salvar(funcionario);
 
                         } else if (opcaocrud == 4) {
-                            System.out.println("Digite o CPF do cliente que deseja excluir");
-                            //excluirClientes();
+                            Funcionario funcionario = new Funcionario();
+                            FuncionarioDAO FuncionarioDao = new FuncionarioDAO();
+                            FuncionarioDao.apagar(0);
                         }
 
                         break;
@@ -106,7 +124,9 @@ public class Main {
 
                             //alterarCadastro(idAnimal);
                         } else if (opcaocrud == 3) {
-
+                            Animal animal = new Animal();
+                            AnimalDAO AnimalDAO = new AnimalDAO();
+                            AnimalDAO.salvar(animal);
                             //cadastrarAnimais();
 
                         } else if (opcaocrud == 4) {
@@ -121,19 +141,25 @@ public class Main {
 
                         if (opcaocrud == 1) {
 
-                            //listarServicos();
+                            ServicoDAO ServicoDao = new ServicoDAO();
+                            ServicoDao.listar();
                         } else if (opcaocrud == 2) {
 
-                            System.out.println("Digite o ID do serviço que deseja alterar");
-                            int idAnimal = leitor.nextInt();
+                            Servico servico = new Servico();
+                            ServicoDAO ServicoDao = new ServicoDAO();
+                            ServicoDao.atualizar(servico);
 
                             //alterarCadastro(idAnimal);
                         } else if (opcaocrud == 3) {
-
+                            Servico servico = new Servico();
+                            ServicoDAO ServicoDao = new ServicoDAO();
+                            ServicoDao.salvar(servico);
                             //cadastrarServico();
 
                         } else if (opcaocrud == 4) {
-                            System.out.println("Digite o ID do serviço que deseja excluir");
+                            Servico servico = new Servico();
+                            ServicoDAO ServicoDao = new ServicoDAO();
+                            ServicoDao.apagar(0);
                             //excluirServico();
                         }
 
@@ -145,7 +171,12 @@ public class Main {
 
             }
              if (opcao == 2){
-                
+
+                 
+
+
+
+
 
             }
             System.out.println("Deseja continuar usando o sistema? 1-SIM | 2-NÃO");
