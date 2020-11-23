@@ -67,30 +67,30 @@ public class AnimalDAO implements DAO<Animal> {
     }
 
     @Override
-    public Animal atualizar(Animal entidade) {
+    public Animal atualizar(Animal entidade) throws IOException {
 
-        Scanner leitor = new Scanner(System.in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         //criando conexao com BD
         String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
-        int idAlteracao = leitor.nextInt();
+        int idAlteracao = in.read();
 
         System.out.println("Selecione o campo que deseja alterar");
         System.out.println("1 - Apelido");
         System.out.println("2 - Raça");
         System.out.println("3 - Cor");
 
-        int opcao = leitor.nextInt();
+        int opcao = in.read();
 
         switch (opcao){
 
             case 1:
 
                 System.out.println("Digite o novo apelido do animal");
-                String novoApelido = leitor.next();
+                String novoApelido = in.readLine();
 
                 //alteração no BD
                 try {
@@ -123,7 +123,7 @@ public class AnimalDAO implements DAO<Animal> {
             case 2:
 
                 System.out.println("Digite a nova raça do animal");
-                String novaRaça = leitor.next();
+                String novaRaça = in.readLine();
 
                 //alteração no BD
 
@@ -156,7 +156,7 @@ public class AnimalDAO implements DAO<Animal> {
 
             case 3:
                 System.out.println("Digite a nova cor do animal");
-                String novaCor = leitor.next();
+                String novaCor = in.readLine();
 
                 //alteração no BD
 
@@ -252,11 +252,11 @@ public class AnimalDAO implements DAO<Animal> {
     }
 
     @Override
-    public void apagar(Integer id) {
+    public void apagar(Integer id) throws IOException {
 
-        Scanner leitor = new Scanner(System.in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Digite o ID do pet que deseja excluir");
-        int idExclusao = leitor.nextInt();
+        int idExclusao = in.read();
 
         //criando conexão com o banco de dados
         String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\Documents\\GitHub\\petshop\\dblite\\banco.db";
