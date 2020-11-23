@@ -30,7 +30,7 @@ public class AnimalDAO implements DAO<Animal> {
         String cor = in.readLine();
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         try {
@@ -69,7 +69,7 @@ public class AnimalDAO implements DAO<Animal> {
         Scanner leitor = new Scanner(System.in);
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
