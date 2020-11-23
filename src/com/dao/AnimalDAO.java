@@ -2,8 +2,6 @@ package com.dao;
 
 import com.model.Animal;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.sql.*;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -15,13 +13,17 @@ public class AnimalDAO implements DAO<Animal> {
 
     @Override
     public Animal salvar(Animal entidade) {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-        int idAnimal = 0;
-        String apelido = "";
-        String cpfDono = "";
-        String raca = "";
-        String cor = "";
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Digite o apelido do animal");
+        String apelido = leitor.next();
+
+        System.out.println("Digite a raça do animal");
+        String raca = leitor.next();
+
+        System.out.println();
+        String cor = leitor.next();
 
         //criando conexao com BD
         String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
@@ -31,13 +33,12 @@ public class AnimalDAO implements DAO<Animal> {
             con = DriverManager.getConnection(url);
 
             //criando o executor e query
-            String sql = "insert into animal (idAnimal, apelido, cpfDono, raca, cor) values (?, ?, ?, ?, ?);";
+            String sql = "insert into animal (apelido, raca, cor) values (?, ?, ?);";
             PreparedStatement executor = con.prepareStatement(sql);
             executor.setInt(1, idAnimal);
             executor.setString(2,apelido);
             executor.setString(3, cpfDono);
-            executor.setString(4, raca);
-            executor.setString(5, cor);
+            
 
             int retorno = executor.executeUpdate();
 
@@ -62,10 +63,9 @@ public class AnimalDAO implements DAO<Animal> {
     public Animal atualizar(Animal entidade) {
 
         Scanner leitor = new Scanner(System.in);
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         //criando conexao com BD
-        String url = "jdbc:sqlite:X:\\Faculdade\\Desenvolvimento de Software I\\petshop\\dblite\\banco.db";
+        String url = "jdbc:sqlite:C:\\Users\\Carlos Neres\\IdeaProjects\\petshop\\dblite\\banco.db";
         Connection con = null;
 
         System.out.println("Digite o ID do animal desejado");
@@ -90,8 +90,7 @@ public class AnimalDAO implements DAO<Animal> {
 
                 try {
                 //criar e executar query
-                con = DriverManager.getConnection(url);
-                String sql = "update animal set apelido = ? where idAnimal = ?;";
+                String sql = "update animal set apelido = ? where id = ?;";
                 PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -126,8 +125,7 @@ public class AnimalDAO implements DAO<Animal> {
 
                 try {
                     //criar e executar query
-                    con = DriverManager.getConnection(url);
-                    String sql = "update animal set raca = ? where idAnimal = ?;";
+                    String sql = "update animal set raca = ? where id = ?;";
                     PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -136,7 +134,6 @@ public class AnimalDAO implements DAO<Animal> {
                     executor.setInt(2, idAlteracao);
 
                     int retorno = executor.executeUpdate();
-
 
                     if (retorno == 1){
 
@@ -161,8 +158,7 @@ public class AnimalDAO implements DAO<Animal> {
 
                 try {
                     //criar e executar query
-                    con = DriverManager.getConnection(url);
-                    String sql = "update animal set cor = ? where idAnimal = ?;";
+                    String sql = "update animal set cor = ? where id = ?;";
                     PreparedStatement executor = null;
 
                     executor = con.prepareStatement(sql);
@@ -263,10 +259,10 @@ public class AnimalDAO implements DAO<Animal> {
         try {
 
         Connection con = DriverManager.getConnection(url);
-        String sql = "delete from animal where idAnimal = ?";
+        String sql = "delete from animal where id = ?";
         PreparedStatement executor = null;
 
-            executor = con.prepareStatement(sql);
+        executor = con.prepareStatement(sql);
 
         executor.setInt(1, idExclusao);
 
